@@ -12,7 +12,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::with('images')->orderBy('created_at', 'desc')->get();
+        return response()->json($products);
     }
 
     /**
@@ -34,9 +35,10 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Product $product)
+    public function show(Request $request, $id)
     {
-        //
+        $product = Product::where('id', $id)->with('images')->get();
+        return response()->json($product);
     }
 
     /**
