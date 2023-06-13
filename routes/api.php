@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -17,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/product', [ProductController::class, 'index']);
 Route::get('/productDetail/{id}', [ProductController::class, 'show']);
+Route::post('/product/store', [ProductController::class, 'store']);
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::post('/category/store', [CategoryController::class, 'store']);
