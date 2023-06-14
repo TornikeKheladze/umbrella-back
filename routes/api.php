@@ -21,3 +21,4 @@ Route::get('/productDetail/{id}', [ProductController::class, 'show']);
 Route::post('/product/store', [ProductController::class, 'store']);
 Route::get('/categories', [CategoryController::class, 'index']);
 Route::post('/category/store', [CategoryController::class, 'store']);
+Route::post('/product/destroy', [ProductController::class, 'destroy']);

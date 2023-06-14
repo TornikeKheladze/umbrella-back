@@ -20,14 +20,6 @@ class ProductController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
@@ -49,7 +41,6 @@ class ProductController extends Controller
         }
 
         return 'Product Created';
-        // return $request['category'];
     }
 
     /**
@@ -57,31 +48,17 @@ class ProductController extends Controller
      */
     public function show(Request $request, $id)
     {
-        $product = Product::where('id', $id)->with('images')->get();
+        $product = Product::where('id', $id)->with('images', 'categories')->get();
         return response()->json($product);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Product $product)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Product $product)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy(Request $request)
     {
-        //
+        Product::where('id', $request['id'])->delete();
+        return 'Product deleted';
     }
 }

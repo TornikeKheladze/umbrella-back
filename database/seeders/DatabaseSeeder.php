@@ -16,8 +16,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        /**
+         * uncoment to Seed the application's database with 100000 products
+         * and 10 category
+         */
+        // Image::factory(10000)->create();
+        // Category::factory(10)->create();
+
         Image::factory(10)->create();
-        Category::factory(6)->create();
+        Category::factory(4)->create();
         $products = Product::all();
         $categories = Category::pluck('id');
 
